@@ -1,61 +1,36 @@
 package HomeWork_3;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Set;
-import HomeWork_3.drugs.Component;
-import HomeWork_3.drugs.impl.CatDrug;
-import HomeWork_3.drugs.impl.components.Azitron;
-import HomeWork_3.drugs.impl.components.Penicillin;
-import HomeWork_3.drugs.impl.components.Water;
 
 public class Main {
     public static void main(String[] args) {
-        
-        // Создаем и добавляем в сет элементы с одинаковыми компанентами
-        Set<Component> result = new HashSet<>();
-        result.add(new Component("Вода", "5", 15));
-        result.add(new Component("Вода", "5", 15));
-        result.add(new Component("Азитрон", "2", 6));
-        System.out.println(result + "\n");
 
-        // Создаем список компонентов
-        List<Component> componentsCat1 = List.of(
-                new Azitron("Азитрон", "4", 6),
-                new Water("Вода", "20", 10));
-        List<Component> componentsCat2 = List.of(
-                new Azitron("Азитрон","4",6),
-                new Penicillin("Пенициллин", "16", 6));
-        List<Component> componentsCat3 = List.of(
-                new Water("Вода", "20", 10),
-                new Azitron("Азитрон", "10", 12));
-        List<Component> componentsCat4 = List.of(
-                new Water("Вода", "20", 1),
-                new Penicillin("Пенициллин", "18", 12));
-        List<Component> componentsCat5 = List.of(
-                new Water("Вода", "10", 12),
-                new Azitron("Азитрон", "8", 12));
-        
-        // Создаем лекарства для кошек из разных компонентов
-        CatDrug drug1 = new CatDrug(componentsCat1);
-        CatDrug drug2 = new CatDrug(componentsCat2);
-        CatDrug drug3 = new CatDrug(componentsCat3);
-        CatDrug drug4 = new CatDrug(componentsCat4);
-        CatDrug drug5 = new CatDrug(componentsCat5);
+        PharmacyComponent azitronit = new Azitronit("Azitronit","10mg,",50);
+        PharmacyComponent pinicil = new Water("Pinicil","10mg,",50);
+        PharmacyComponent water = new Pinicilin("Water","10mg,",50);
 
-        // Создаем список лекарств
-        List<CatDrug> drugs = new ArrayList<>();
-        drugs.add(drug1);
-        drugs.add(drug2);
-        drugs.add(drug3);
-        drugs.add(drug4);
-        drugs.add(drug5);
-        System.out.println(drugs);
-
-        // Сортируем список лекарств для кошек по возрастанию силы
-        Collections.sort(drugs);
-        System.out.println(drugs);
+        Pharmacy pharmacy1 = new Pharmacy().addComponent(pinicil).addComponent(water);
+        Pharmacy pharmacy2 = new Pharmacy().addComponent(pinicil).addComponent(azitronit);
+        Pharmacy pharmacy3 = new Pharmacy().addComponent(pinicil).addComponent(water).addComponent(azitronit);
+        Pharmacy pharmacy4 = new Pharmacy().addComponent(azitronit).addComponent(water).addComponent(azitronit);
+        Pharmacy pharmacy5 = new Pharmacy().addComponent(pinicil).addComponent(water).addComponent(azitronit);
+        Pharmacy pharmacy6 = new Pharmacy().addComponent(azitronit).addComponent(water).addComponent(pinicil);
+        Pharmacy pharmacy7 = new Pharmacy().addComponent(pinicil).addComponent(water).addComponent(pinicil);
+        Iterator<PharmacyComponent> iterator = pharmacy1;
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        Set<Pharmacy> result = new HashSet<>();
+        result.add(pharmacy1);
+        result.add(pharmacy2);
+        result.add(pharmacy3);
+        result.add(pharmacy4);
+        result.add(pharmacy5);
+        result.add(pharmacy6);
+        result.add(pharmacy7);
+        System.out.println(pharmacy6.compareTo(pharmacy7));
+        System.out.println(result.size());
     }
 }
