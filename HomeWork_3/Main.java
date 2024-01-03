@@ -7,12 +7,12 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
 
-        PharmacyComponent azitronit = new Azitronit("Azitronit","10mg,",50);
+        PharmacyComponent azitronit = new Azitron("Azitron","10mg,",50);
         PharmacyComponent pinicil = new Water("Pinicil","10mg,",50);
         PharmacyComponent water = new Pinicilin("Water","10mg,",50);
 
         Pharmacy pharmacy1 = new Pharmacy().addComponent(pinicil).addComponent(water);
-        Pharmacy pharmacy2 = new Pharmacy().addComponent(pinicil).addComponent(azitronit);
+        Pharmacy pharmacy2 = new Pharmacy().addComponent(pinicil).addComponent(azitron);
         Pharmacy pharmacy3 = new Pharmacy().addComponent(pinicil).addComponent(water).addComponent(azitronit);
         Pharmacy pharmacy4 = new Pharmacy().addComponent(azitronit).addComponent(water).addComponent(azitronit);
         Pharmacy pharmacy5 = new Pharmacy().addComponent(pinicil).addComponent(water).addComponent(azitronit);
